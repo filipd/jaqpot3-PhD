@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>jaqpot3</artifactId>
+        <groupId>org.opentox</groupId>
+        <version>3.3</version>
+        <relativePath>../</relativePath>
+    </parent>
+    <groupId>org.opentox</groupId>
+    <artifactId>jaqpot3-standalone</artifactId>
+    <version>3.3.2</version>
+    <name>jaqpot3-standalone</name>
+    <url>http://maven.apache.org</url>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.restlet.jse</groupId>
+            <artifactId>org.restlet</artifactId>
+            <version>2.0-M7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.restlet.jse</groupId>
+            <artifactId>org.restlet.ext.grizzly</artifactId>
+            <version>2.0-M7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.restlet.jse</groupId>
+            <artifactId>org.restlet.ext.wadl</artifactId>
+            <version>2.0-M7</version>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>jaqpot_properties</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+
+                <!-- ***** BASIC PROPERTIES ***** -->
+
+                <!--Port on which the service starts
+                Default value is: 8080-->
+                <jaqpot_port>8080</jaqpot_port>                
+                <!--Maximum number of allowed models per user
+                Service providers might specify per-user
+                limits accessing the database (table User)
+                Default value: 2000-->
+                <jaqpot.max_models_per_user>15000</jaqpot.max_models_per_user>
+                <!--Maximum number of allowed bibtex entries per user
+                Service providers might specify per-user
+                limits accessing the database (table User)
+                Default value: 2000-->
+                <jaqpot.max_bibtex_per_user>2000</jaqpot.max_bibtex_per_user>
+                <!--Maximum number of allowed active tasks per user
+                Service providers might specify per-user
+                limits accessing the database (table User)
+                Default value: 10-->
+                <jaqpot.max_tasks_per_user>10</jaqpot.max_tasks_per_user>
+
+
+                <url.suffix></url.suffix>                
+
+
+
+                <!--***** EXECUTION POOL ***** -->
+
+                <!--Blocking Queue Size
+                Default Value: 100-->
+                <taskpool.blockingQueueSize>100</taskpool.blockingQueueSize>
+
+                <!--Maximum size of the execution pool
+                Default value: 4-->
+                <taskpool.maxSize>4</taskpool.maxSize>
+
+                <!--Core size of the execution pool
+                Default value: 4-->
+                <taskpool.coreSize>4</taskpool.coreSize>
+            </properties>
+        </profile>
+    </profiles>
+
+
+    <repositories>
+        <repository>
+            <id>javanet-for-grizzly</id>
+            <url>http://download.java.net/maven/2</url>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <!-- AMBIT PLOVDIV REPO -->
+        <repository>
+            <id>ambit-plovdiv</id>
+            <url>http://ambit.uni-plovdiv.bg:8083/nexus/content/repositories/thirdparty</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>opentox-ntua-gr</id>
+            <url>http://opentox.ntua.gr:8081/nexus/content/repositories/releases/</url>
+            <!--arxika eixe toy PLOVDIV http://ambit.uni-plovdiv.bg:8083/nexus/content/repositories/thirdparty-->
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>maven-restlet</id>
+            <name>Public online Restlet repository</name>
+            <url>http://maven.restlet.org</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>bc-public</id>
+            <name>Public Maven Repository at Brockmann-Consult</name>
+            <url>http://www.brockmann-consult.de/mvn/os</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>glassfish</id>
+            <name>javamelody is here</name>
+            <url>http://maven.glassfish.org/content/groups/public</url>
+            <releases><enabled>true</enabled></releases>
+        </repository>
+
+        <repository>
+            <id>opennms-repo</id>
+            <name>OpenNMS Repository</name>
+            <url>http://repo.opennms.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.3.1</version>
+                    <configuration>
+                        <source>1.6</source>
+                        <target>1.6</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+    </build>
+
+</project>

@@ -1,0 +1,14 @@
+2013-09-17 21:27:02.544 [INFO] org.opentox.toxotis.database.pool.DataSourceC3P0:81 - Acquired datasource [d91364ff-3063-4f42-8664-03f0fc4ceb6a] with properties... {c3p0.maxIdleTime=5, c3p0.initialPoolSize=100, user=******, c3p0.numHelperThreads=110, c3p0.acquireIncrement=3, c3p0.checkoutTimeout=0, c3p0.debugUnreturnedConnectionStackTraces=true, c3p0.testConnectionOnCheckout=true, c3p0.testConnectionOnCheckin=true, c3p0.acquireRetryDelay=1000, password=******, c3p0.maxPoolSize=1000, key=AA, c3p0.jdbcUrl=jdbc:mysql://localhost:${jaqpot.database.mysqlport}/${jaqpot.database.name}?useUnicode=true&characterEncoding=UTF8&characterSetResults=UTF-8, c3p0.acquireRetryAttempts=50, c3p0.minPoolSize=50}
+2013-09-17 21:27:51.931 [WARN] org.opentox.toxotis.database.pool.DataSourceFactory:127 - Connection could not be retrieved from the pool
+java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:106)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:529)
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:128)
+	at org.opentox.toxotis.database.pool.DataSourceFactory.getConnection(DataSourceFactory.java:119)
+	at org.opentox.jaqpot3.www.WebApplecation.<clinit>(WebApplecation.java:106)
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1319)
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:557)
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:477)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:525)
+	... 3 more
